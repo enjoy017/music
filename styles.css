@@ -1,0 +1,138 @@
+:root {
+  --bg1: #eaf2ff;
+  --bg2: #fef6ff;
+  --card: rgba(255, 255, 255, 0.85);
+  --ink: #2b2f3a;
+  --muted: #7a8499;
+  --line: #e3e9f5;
+  --brand: #6c5ce7;
+  --brand2: #00b8d9;
+  --shadow: 0 10px 30px rgba(60, 80, 160, 0.12);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: "PingFang SC", "Microsoft YaHei", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  color: var(--ink);
+  background: linear-gradient(135deg, var(--bg1), var(--bg2));
+  min-height: 100vh;
+}
+#app { max-width: 1180px; margin: 0 auto; padding: 18px 20px 60px; }
+
+/* 顶栏 */
+.topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  position: relative; gap: 16px; flex-wrap: wrap;
+}
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand .logo {
+  width: 46px; height: 46px; border-radius: 14px;
+  background: linear-gradient(135deg, var(--brand), var(--brand2));
+  display: grid; place-items: center; color: #fff; font-size: 24px;
+  box-shadow: var(--shadow);
+}
+.brand h1 { font-size: 20px; margin: 0; letter-spacing: .5px; }
+.brand p { margin: 2px 0 0; color: var(--muted); font-size: 12px; }
+
+/* 吉祥物 */
+.mascot-wrap {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--card); border: 1px solid var(--line);
+  padding: 8px 14px 8px 8px; border-radius: 18px; box-shadow: var(--shadow);
+}
+.mascot-wrap .emo-label { font-weight: 700; font-size: 15px; }
+.mascot-wrap .emo-sub { font-size: 11px; color: var(--muted); }
+
+/* 天气选择 */
+.weather { display: flex; gap: 10px; flex-wrap: wrap; margin: 16px 0; }
+.weather .wbtn {
+  border: 1px solid var(--line); background: var(--card); border-radius: 16px;
+  padding: 10px 14px; cursor: pointer; text-align: center; min-width: 74px;
+  transition: transform .12s, box-shadow .12s; box-shadow: var(--shadow);
+}
+.weather .wbtn:hover { transform: translateY(-3px); }
+.weather .wbtn.active { border-color: var(--brand); background: #f3eeff; }
+.weather .wicon { font-size: 26px; line-height: 1; }
+.weather .wlabel { font-size: 12px; margin-top: 4px; color: var(--muted); }
+
+/* 网格 */
+.grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 18px; }
+@media (max-width: 920px) { .grid { grid-template-columns: 1fr; } }
+.card {
+  background: var(--card); border: 1px solid var(--line); border-radius: 18px;
+  padding: 18px; box-shadow: var(--shadow);
+}
+.card h2 { margin: 0 0 12px; font-size: 16px; display: flex; align-items: center; gap: 8px; }
+.card h2 .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--brand); }
+
+/* 输入按钮 */
+.inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.inputs .ibtn {
+  border: 1px solid var(--line); background: #fff; border-radius: 14px; padding: 12px;
+  cursor: pointer; text-align: center; font-size: 13px; transition: .12s;
+}
+.inputs .ibtn:hover { border-color: var(--brand); background: #f7f4ff; }
+.inputs .ibtn .ic { font-size: 22px; }
+.inputs .ibtn .st { display: block; color: var(--muted); font-size: 11px; margin-top: 3px; }
+.inputs .ibtn.on { border-color: var(--brand2); background: #eafbff; }
+
+.media-box {
+  margin-top: 14px; border-radius: 14px; overflow: hidden; background: #0e1220;
+  position: relative; min-height: 220px; display: grid; place-items: center;
+}
+.media-box img, .media-box video { width: 100%; max-height: 360px; object-fit: contain; }
+.media-box .ph { color: #9fb0d0; font-size: 13px; padding: 40px; text-align: center; }
+.status { margin-top: 10px; font-size: 12px; color: var(--muted); min-height: 16px; }
+
+/* 情绪条 */
+.bars { margin-top: 14px; }
+.bar { display: flex; align-items: center; gap: 10px; margin: 6px 0; font-size: 12px; }
+.bar .name { width: 42px; color: var(--muted); }
+.bar .track { flex: 1; height: 10px; background: #eef2fb; border-radius: 6px; overflow: hidden; }
+.bar .fill { height: 100%; border-radius: 6px; transition: width .25s; }
+.bar .pct { width: 42px; text-align: right; color: var(--ink); font-variant-numeric: tabular-nums; }
+
+/* 推荐列表 */
+.songs { display: flex; flex-direction: column; gap: 10px; }
+.song {
+  display: flex; align-items: center; gap: 12px; border: 1px solid var(--line);
+  border-radius: 14px; padding: 10px 12px; background: #fff;
+}
+.song .play {
+  width: 38px; height: 38px; border-radius: 50%; border: none; cursor: pointer; flex: none;
+  background: linear-gradient(135deg, var(--brand), var(--brand2)); color: #fff; font-size: 16px;
+}
+.song .meta { flex: 1; min-width: 0; }
+.song .title { font-weight: 600; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.song .sub { font-size: 11px; color: var(--muted); }
+.song .tag { font-size: 11px; padding: 2px 8px; border-radius: 999px; color: #fff; flex: none; }
+.song .analyse { font-size: 11px; border: 1px solid var(--line); background: #fff; border-radius: 8px; padding: 4px 8px; cursor: pointer; flex: none; }
+.song.playing { border-color: var(--brand); background: #f6f2ff; }
+.section-title { margin: 18px 0 8px; font-size: 13px; color: var(--muted); font-weight: 700; }
+
+/* 样例人脸 */
+.gallery { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+.gallery .gitem { width: 84px; cursor: pointer; border-radius: 12px; overflow: hidden; border: 2px solid transparent; }
+.gallery .gitem:hover { border-color: var(--brand); }
+.gallery img { width: 100%; height: 84px; object-fit: cover; display: block; }
+.gallery .glabel { font-size: 11px; text-align: center; color: var(--muted); margin-top: 2px; }
+
+/* 说明区 */
+.details { margin-top: 22px; }
+details {
+  background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+  padding: 6px 16px; margin-bottom: 12px; box-shadow: var(--shadow);
+}
+details summary { cursor: pointer; font-weight: 700; padding: 10px 0; font-size: 15px; }
+details .body { font-size: 13px; line-height: 1.7; color: #3a4256; padding: 4px 0 14px; }
+details .body h3 { font-size: 14px; margin: 14px 0 6px; color: var(--brand); }
+details .body code { background: #eef1fb; padding: 1px 6px; border-radius: 6px; font-size: 12px; }
+details .body ul { padding-left: 20px; margin: 6px 0; }
+details .body table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 12px; }
+details .body th, details .body td { border: 1px solid var(--line); padding: 6px 8px; text-align: left; }
+details .body th { background: #f3f5fc; }
+
+.tag-pill { display:inline-block; padding:2px 8px; border-radius:999px; color:#fff; font-size:11px; }
+.landscapes { display:flex; gap:10px; flex-wrap:wrap; margin-top:8px; }
+.landscapes img { width:120px; height:80px; object-fit:cover; border-radius:10px; border:1px solid var(--line); }
+audio { width: 100%; margin-top: 8px; }

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>人脸情绪识别 · 歌曲推荐系统</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <script src="/lib/vue.global.prod.js"></script>
+  <script src="/lib/face-api.min.js"></script>
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    // 双击打开（file:// 协议）时浏览器禁止加载模块/模型，给出明确引导
+    if (location.protocol === 'file:') {
+      document.body.innerHTML =
+        '<div style="max-width:640px;margin:60px auto;font-family:system-ui;padding:28px 32px;' +
+        'border:2px solid #ff5a5f;border-radius:14px;background:#fff5f5;color:#333;line-height:1.8">' +
+        '<h2 style="margin:0 0 12px;color:#ff5a5f">⚠️ 请勿直接双击打开本文件</h2>' +
+        '<p>浏览器安全策略禁止 <code>file://</code> 页面加载 ES 模块与人脸模型，必须通过本地服务器访问：</p>' +
+        '<ol><li>在本目录运行：<br><code>python -m http.server 8000 --directory public</code></li>' +
+        '<li>浏览器打开：<br><b><a href="http://localhost:8000" style="color:#2ec4b6">http://localhost:8000</a></b></li></ol>' +
+        '<p style="color:#888">（若服务器已在运行，直接点击上方链接即可）</p></div>';
+    }
+  </script>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
